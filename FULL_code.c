@@ -11,7 +11,8 @@ int main(void)
 {
 	char *line = NULL, **array = NULL;
 	size_t len = 0;
-	int i, status, read;
+	int i, status, read, size;
+	char *str, *con, *path;
 
 	i = 1;
 	while (1)
@@ -52,6 +53,34 @@ int main(void)
 			}
 		}
 		array[i] = NULL;
+		/* GETTING THE PATH AND USING STRTOK TO SAPERATE UNTILL ':'*/
+        path = getenv("PATH");
+        size = strlen(path);
+        str = malloc(sizeof(char) * (size + 1));
+        if (str == NULL)
+        {
+            perror("ERROR");
+            exit(1);
+        }
+        strcpy(str, path);
+        token = strtok(str, ":");
+        while (token != NULL)
+        {
+            con = malloc(sizeof(char) * (strlen(token) + strlen(array[0]) + 2));
+            if (con == NULL)
+            {
+                perror("ERROR");
+                exit(1);
+            }
+            strcpy(con, token);
+            strcat(con, "/");
+            strcat(con, array[0]);
+            if (access(con, X_OK) == 0)
+                break;
+            free(con);
+            token = strtok(NULL, ":");
+        }
+        /* PATH FINDER END */
 
 		/* FORK */
 		pid_t pid = fork();
@@ -63,6 +92,7 @@ int main(void)
 		if (pid == 0)
 		{
 			execve(array[0], array, NULL);
+			execve(con, array, NULL);
 			perror("ERROR");
 			exit(1);
 		}
