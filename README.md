@@ -1,4 +1,4 @@
-# 0x16. C - Simple Shell
+# README BASIC SHELL
 *BASIC SHELL FUNCTIONS*
 	#getpid()
 		Takes in parametres void and returns the pid of the child of the current process.
