@@ -4,7 +4,7 @@
  * @array: a double pointer
  * Return: double pointer.
  */
-char *path_finder(char **array)
+void *path_finder(char **array)
 {
 	char *path, *str, *con, *token;
 	int size;
@@ -31,8 +31,19 @@ char *path_finder(char **array)
 		_strcat(con, "/");
 		_strcat(con, array[0]);
 		if (access(con, X_OK) == 0)
+		{
+			execute_line(con, array);
 			break;
-		token = strtok(NULL, ":");
+		}
+		else
+		{
+			con = NULL;
+			token = strtok(NULL, ":");
+			continue;
+		}
 	}
-	return (con);
+	if (con == NULL)
+		perror(array[0]);
+	free(con);
+	free(str);
 }
