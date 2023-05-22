@@ -24,9 +24,15 @@ int clear_check(char **array);
 void sigint_check(int sign);
 int spaces_tabs_check(char *line);
 
-/*******string*******/
+/*******STRING*******/
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
+/********************/
+
+/****ADVANCED FUNCTION*****/
+ssize_t _getline(char **line, size_t *len, FILE *stream);
+/**************************/
+
 #endif
