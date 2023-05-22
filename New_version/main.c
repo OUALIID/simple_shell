@@ -26,12 +26,15 @@ int main(void)
 		array = string_storage(line, i);
 		if (clear_check(array) == 0)
 			continue;
-		con = path_finder(array);
 		exit_check(array);
 		env_check(array);
-		execute_line(con, array);
-		free(array);
+		if (access(array[0], X_OK) == 0)
+			execute_line(array[0], array);
+		else
+			path_finder(array);
 		i = 1;
 	}
+	free(array);
+
 	return (0);
 }

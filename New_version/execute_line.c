@@ -17,7 +17,7 @@ void execute_line(char *con, char **array)
 	}
 	if (pid == 0)
 	{
-		execve(array[0], array, NULL);
+		/*execve(array[0], array, NULL);  NO NEED BECAUSE WE DID IT IN THE MAIN*/
 		execve(con, array, NULL);
 		perror(array[0]);
 		exit(1);

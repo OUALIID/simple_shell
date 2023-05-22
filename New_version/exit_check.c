@@ -8,7 +8,7 @@ void exit_check(char **array)
 {
 	int tmp;
 
-	if (_strcmp(array[0], "exit") == 0)
+	if (_strlen(array[0]) == _strlen("exit") && _strcmp(array[0], "exit") == 0)
 	{
 		if (array[1] != NULL)
 		{
