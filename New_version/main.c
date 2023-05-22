@@ -14,7 +14,8 @@ int main(void)
 	while (1)
 	{
 		printf("$ ");
-		if (getline(&line, &len, stdin) == -1)
+		fflush(stdout);
+		if (_getline(&line, &len, stdin) == -1)
 		{
 			perror("getline error");
 			exit(1);
@@ -35,6 +36,5 @@ int main(void)
 		i = 1;
 	}
 	free(array);
-
 	return (0);
 }
