@@ -6,11 +6,9 @@
 int main(void)
 {
 	signal(SIGINT, sigint_check);
-	char *line = NULL, **array = NULL, *con;
+	char *line = NULL, **array;
 	size_t len = 0;
-	int i;
 
-	i = 1;
 	while (1)
 	{
 		printf("$ ");
@@ -20,21 +18,29 @@ int main(void)
 			perror("getline error");
 			exit(1);
 		}
-		if (line[0] == '\n')
+		if (line[0] == '\n' || spaces_tabs_check(line) == 0)
+		{
+			free(line);
+			line = NULL;
 			continue;
-		if (spaces_tabs_check(line) == 0)
-			continue;
-		array = string_storage(line, i);
+		}
+		array = string_storage(line);
 		if (clear_check(array) == 0)
+		{
+			free(line);
+			line = NULL;
+			free(array);
 			continue;
-		exit_check(array);
+		}
+		exit_check(array, line);
 		env_check(array);
 		if (access(array[0], X_OK) == 0)
 			execute_line(array[0], array);
 		else
 			path_finder(array);
-		i = 1;
+		free(line);
+		line = NULL;
+		free(array);
 	}
-	free(array);
 	return (0);
 }

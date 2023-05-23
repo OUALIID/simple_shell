@@ -6,12 +6,9 @@
  */
 void *path_finder(char **array)
 {
-	char *path, *str, *con, *token;
-	int size;
+	char *path = getenv("PATH"), *str, *con, *token;
 
-	path = getenv("PATH");
-	size = _strlen(path);
-	str = malloc(sizeof(char) * (size + 1));
+	str = malloc(sizeof(char) * (_strlen(path) + 1));
 	if (str == NULL)
 	{
 		perror("ERROR");
@@ -25,6 +22,7 @@ void *path_finder(char **array)
 		if (con == NULL)
 		{
 			perror("ERROR");
+			free(str);
 			exit(1);
 		}
 		_strcpy(con, token);
@@ -37,10 +35,12 @@ void *path_finder(char **array)
 		}
 		else
 		{
+			free(con);
 			con = NULL;
 			token = strtok(NULL, ":");
 			continue;
 		}
+		free(con);
 	}
 	if (con == NULL)
 		perror(array[0]);

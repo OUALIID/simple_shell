@@ -2,14 +2,15 @@
 /**
  * string_storage - check the code.
  * @line: a pointer
- * @i: itterator
  * Return: double pointer.
  */
-char **string_storage(char *line, int i)
+char **string_storage(char *line)
 {
 	char *token;
 	char **array;
+	int i;
 
+	i = 1;
 	token = strtok(line, " \n\t");
 	array = malloc(sizeof(char *) * i);
 	if (array == NULL)
@@ -31,6 +32,5 @@ char **string_storage(char *line, int i)
 		}
 	}
 	array[i] = NULL;
-	free(token);
 	return (array);
 }

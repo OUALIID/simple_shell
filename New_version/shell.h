@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
 
@@ -12,13 +13,12 @@
 extern char **environ;
 
 /*INCLUDED FUNCTIONS*/
-
-char **string_storage(char *line, int i);
+char **string_storage(char *line);
 void *path_finder(char **array);
 void execute_line(char *con, char **array);
 
 /*******CHECKS*******/
-void exit_check(char **array);
+void exit_check(char **array, char *line);
 void env_check(char **array);
 int clear_check(char **array);
 void sigint_check(int sign);
@@ -30,6 +30,7 @@ void *_realloc(void *ptr, size_t size);
 /*********************/
 
 /*******STRING*******/
+int _putchar(char c);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
