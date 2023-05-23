@@ -11,7 +11,8 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
+		_putchar('$');
+		_putchar(' ');
 		fflush(stdout);
 		if (_getline(&line, &len, stdin) == -1)
 		{
