@@ -4,7 +4,7 @@
  * @array: a double pointer
  * Return: double pointer.
  */
-void *path_finder(char **array)
+void path_finder(char **array)
 {
 	char *path = getenv("PATH"), *str, *con, *token;
 

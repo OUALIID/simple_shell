@@ -5,10 +5,10 @@
  */
 int main(void)
 {
-	signal(SIGINT, sigint_check);
-	char *line = NULL, **array;
+	char *line, **array;
 	size_t len = 0;
 
+	line = NULL;
 	while (1)
 	{
 		_putchar('$');

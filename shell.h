@@ -14,7 +14,7 @@ extern char **environ;
 
 /*INCLUDED FUNCTIONS*/
 char **string_storage(char *line);
-void *path_finder(char **array);
+void path_finder(char **array);
 void execute_line(char *con, char **array);
 
 /*******CHECKS*******/

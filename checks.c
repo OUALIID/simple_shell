@@ -6,10 +6,12 @@
  */
 void env_check(char **array)
 {
+	int j, l;
+
 	if (_strlen(array[0]) == _strlen("env") && _strcmp(array[0], "env") == 0)
-		for (int j = 0; environ[j] != NULL; j++)
+		for (j = 0; environ[j] != NULL; j++)
 		{
-			for (int l = 0; environ[j][l] != '\0'; l++)
+			for (l = 0; environ[j][l] != '\0'; l++)
 				_putchar(environ[j][l]);
 			_putchar('\n');
 		}
@@ -75,13 +77,4 @@ int spaces_tabs_check(char *line)
 	if (i == _strlen(line) - 1)
 		return (0);
 	return (1);
-}
-/**
- * sigint_check - check the code.
- * @sign: variable
- * Return: double pointer.
- */
-void sigint_check(int sign)
-{
-	printf("Pressed Ctrl+C.\n");
 }
