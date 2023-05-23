@@ -23,7 +23,7 @@ char **string_storage(char *line, int i)
 		token = strtok(NULL, " \n\t");
 		array[i] = token;
 		i++;
-		array = realloc(array, sizeof(char *) * (i + 1));
+		array = _realloc(array, sizeof(char *) * (i + 1));
 		if (array == NULL)
 		{
 			perror("ERROR");

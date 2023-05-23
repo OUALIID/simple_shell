@@ -23,6 +23,11 @@ void env_check(char **array);
 int clear_check(char **array);
 void sigint_check(int sign);
 int spaces_tabs_check(char *line);
+/*******************/
+
+/*****ALLOCATION******/
+void *_realloc(void *ptr, size_t size);
+/*********************/
 
 /*******STRING*******/
 char *_strcpy(char *dest, char *src);
