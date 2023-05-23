@@ -3,6 +3,19 @@
  * main - check the code.
  * Return: always 0.
  */
+
+void _putchar_cisfun()
+{
+	_putchar('#');
+	_putchar('c');
+	_putchar('i');
+	_putchar('s');
+	_putchar('f');
+	_putchar('u');
+	_putchar('n');
+	_putchar('$');
+	_putchar(' ');
+}
 int main(void)
 {
 	char *line, **array;
@@ -11,8 +24,7 @@ int main(void)
 	line = NULL;
 	while (1)
 	{
-		_putchar('$');
-		_putchar(' ');
+		_putchar_cisfun();
 		fflush(stdout);
 		if (_getline(&line, &len, stdin) == -1)
 		{
