@@ -34,6 +34,7 @@ void free_2D(char **array)
 }
 int main(void)
 {
+	ssize_t read;
 	char *line;
 	size_t len = 0;
 	char **array;
@@ -44,7 +45,8 @@ int main(void)
 	{
 		if (is_interactive)
 			_putchar_cisfun();
-		if (_getline(&line, &len, stdin) == -1)
+		read = getline(&line, &len, stdin);
+		if (read == -1)
 		{
 			if (is_interactive)
 			{
@@ -52,6 +54,7 @@ int main(void)
 				free(line);
 				exit(EXIT_SUCCESS);
 			}
+			free(line);
 			break;
 		}
 		if (line[0] == '\n' || spaces_tabs_check(line) == 0)

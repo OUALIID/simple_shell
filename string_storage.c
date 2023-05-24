@@ -12,7 +12,9 @@ char **string_storage(char *line)
 
 	i = 0;
 	token = strtok(line, " \n\t");
-	array = malloc(sizeof(char *) * i);
+	array = malloc(sizeof(char *) * 2);
+	array[0] = NULL;
+	array[1] = NULL;
 	if (array == NULL)
 	{
 		perror("ERROR");
