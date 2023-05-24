@@ -1,10 +1,9 @@
 #include "shell.h"
 /**
- * main - check the code.
- * Return: always 0.
+ * _putchar_cisfun - check the code.
+ * Return: void.
  */
-
-void _putchar_cisfun()
+void _putchar_cisfun(void)
 {
 	_putchar('#');
 	_putchar('c');
@@ -16,6 +15,10 @@ void _putchar_cisfun()
 	_putchar('$');
 	_putchar(' ');
 }
+/**
+ * main - check the code.
+ * Return: always 0.
+ */
 int main(void)
 {
 	char *line, **array;
@@ -26,7 +29,7 @@ int main(void)
 	{
 		_putchar_cisfun();
 		fflush(stdout);
-		if (_getline(&line, &len, stdin) == -1)
+		if (getline(&line, &len, stdin) == -1)
 		{
 			perror("getline error");
 			exit(1);
