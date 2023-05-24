@@ -27,7 +27,7 @@ int spaces_tabs_check(char *line);
 /*******************/
 
 /*****ALLOCATION******/
-void *_realloc(void *ptr, size_t size);
+void *_realloc(void *ptr, unsigned int size);
 /*********************/
 
 /*******STRING*******/

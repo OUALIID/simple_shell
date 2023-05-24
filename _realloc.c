@@ -7,21 +7,22 @@
  * Return: pointer.
  */
 #include <stdlib.h>
-
-void *_realloc(void *ptr, size_t size)
+void *_realloc(void *ptr, unsigned int size)
 {
-	void **new_ptr;
-	size_t i;
+	char *new_ptr;
+	unsigned int i, newest;
 
-	if (size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
 	if (ptr == NULL)
 	{
 		ptr = malloc(size);
 		return (ptr);
+	}
+	if (size > sizeof(ptr))
+		newest = sizeof(ptr);
+	if (size == 0)
+	{
+		free(ptr);
+		return (NULL);
 	}
 	new_ptr = malloc(size);
 	if (new_ptr == NULL)
@@ -29,10 +30,8 @@ void *_realloc(void *ptr, size_t size)
 		perror("ERROR");
 		exit(1);
 	}
-	for (i = 0; i < size / sizeof(void *); i++)
-	{
-		new_ptr[i] = ((void **)ptr)[i];
-	}
+	for (i = 0; i < newest; i++)
+		new_ptr[i] = ((char *)ptr)[i];
 	free(ptr);
 	return (new_ptr);
 }

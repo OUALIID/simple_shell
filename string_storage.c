@@ -21,8 +21,7 @@ char **string_storage(char *line)
 	array[0] = token;
 	while (token != NULL)
 	{
-		token = strtok(NULL, " \n\t");
-		temp = _realloc(array, sizeof(char *) * (i + 1));
+		temp = _realloc(array, sizeof(char *) * (i + 2));
 		if (temp == NULL)
 		{
 			perror(array[0]);
@@ -37,6 +36,7 @@ char **string_storage(char *line)
 			free(line);
 			exit(1);
 		}
+		token = strtok(NULL, " \n\t");
 	}
 	array[i] = NULL;
 	return (array);
