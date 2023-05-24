@@ -25,7 +25,7 @@ int execute_line(char *con, char **array)
 	else
 	{
 		wait(&status);
-		exit_stat = WIFEXITED(status);
+		exit_stat = WEXITSTATUS(status);
 	}
 	return (exit_stat);
 }
