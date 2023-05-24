@@ -45,7 +45,7 @@ int main(void)
 	{
 		if (is_interactive)
 			_putchar_cisfun();
-		if (_getline(&line, &len, stdin) == -1)
+		if (getline(&line, &len, stdin) == -1)
 		{
 			if (is_interactive)
 			{
