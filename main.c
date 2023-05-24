@@ -19,6 +19,19 @@ void _putchar_cisfun(void)
  * main - check the code.
  * Return: always 0.
  */
+void free_2D(char **array)
+{
+	int i;
+	i = 0;
+	if (array == NULL)
+		return;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		array[i] = NULL;
+	}
+	free(array);
+}
 int main(void)
 {
 	char *line;
@@ -52,7 +65,7 @@ int main(void)
 		{
 			free(line);
 			line = NULL;
-			free(array);
+			free_2D(array);
 			continue;
 		}
 		exit_check(array, line);
@@ -63,7 +76,7 @@ int main(void)
 			path_finder(array);
 		free(line);
 		line = NULL;
-		free(array);
+		free_2D(array);
 	}
 	return 0;
 }
