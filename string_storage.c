@@ -16,7 +16,7 @@ char **string_storage(char *line)
 	if (array == NULL)
 	{
 		perror("ERROR");
-		exit(1);
+		return (NULL);
 	}
 	array[0] = token;
 	while (token != NULL)
@@ -27,7 +27,8 @@ char **string_storage(char *line)
 		array = _realloc(array, sizeof(char *) * (i + 1));
 		if (array == NULL)
 		{
-			perror("ERROR");
+			perror(array[0]);
+			free(line);
 			exit(1);
 		}
 	}
