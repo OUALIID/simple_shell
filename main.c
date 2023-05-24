@@ -33,7 +33,7 @@ int main(void)
 			_putchar_cisfun();
 		if (_getline(&line, &len, stdin) == -1)
 		{
-			if (!is_interactive)
+			if (is_interactive)
 			{
 				perror("getline error");
 				free(line);
