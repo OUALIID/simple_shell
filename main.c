@@ -57,6 +57,7 @@ int main(void)
 		}
 		exit_check(array, line);
 		env_check(array);
+
 		if (access(array[0], X_OK) == 0)
 			execute_line(array[0], array);
 		else
