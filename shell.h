@@ -16,10 +16,10 @@ extern char **environ;
 /*INCLUDED FUNCTIONS*/
 char **string_storage(char *line);
 void path_finder(char **array);
-void execute_line(char *con, char **array);
+int execute_line(char *con, char **array);
 
 /*******CHECKS*******/
-void exit_check(char **array, char *line);
+void exit_check(char **array, char *line, int exit_stat);
 void env_check(char **array);
 int clear_check(char **array);
 void sigint_check(int sign);

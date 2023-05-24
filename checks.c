@@ -36,7 +36,7 @@ int clear_check(char **array)
  * @line: a pointer
  * Return: void.
  */
-void exit_check(char **array, char *line)
+void exit_check(char **array, char *line, int exit_stat)
 {
 	int tmp;
 
@@ -49,12 +49,13 @@ void exit_check(char **array, char *line)
 			free(line);
 			exit(tmp);
 		}
-		else
+		else if (exit_stat == -1)
 		{
 			free(array);
 			free(line);
 			exit(0);
 		}
+		exit(exit_stat);
 	}
 }
 /**

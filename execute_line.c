@@ -5,8 +5,9 @@
  * @array: a double pointer
  * Return: double pointer.
  */
-void execute_line(char *con, char **array)
+int execute_line(char *con, char **array)
 {
+	int exit_stat = 0;
 	int status;
 	pid_t pid = fork();
 
@@ -24,5 +25,7 @@ void execute_line(char *con, char **array)
 	else
 	{
 		wait(&status);
+		exit_stat = WIFEXITED(status);
 	}
+	return (exit_stat);
 }

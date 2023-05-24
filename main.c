@@ -35,6 +35,7 @@ void free_2D(char **array)
 }
 int main(void)
 {
+	int exit_stat = -1;
 	ssize_t read;
 	char *line;
 	size_t len = 0;
@@ -72,10 +73,10 @@ int main(void)
 			free_2D(array);
 			continue;
 		}
-		exit_check(array, line);
+		exit_check(array, line, exit_stat);
 		env_check(array);
 		if (access(array[0], X_OK) == 0)
-			execute_line(array[0], array);
+			exit_stat = execute_line(array[0], array);
 		else
 			path_finder(array);
 		free(line);
