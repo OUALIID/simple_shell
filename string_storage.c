@@ -7,7 +7,7 @@
 char **string_storage(char *line)
 {
 	char *token;
-	char **array;
+	char **array, **temp;
 	int i;
 
 	i = 1;
@@ -22,9 +22,15 @@ char **string_storage(char *line)
 	while (token != NULL)
 	{
 		token = strtok(NULL, " \n\t");
-		array[i] = token;
+		temp = _realloc(array, sizeof(char *) * (i + 1));
+		if (temp == NULL)
+		{
+			perror(array[0]);
+			free(line);
+			exit(1);
+		}
+		array = temp;
 		i++;
-		array = _realloc(array, sizeof(char *) * (i + 1));
 		if (array == NULL)
 		{
 			perror(array[0]);
