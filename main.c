@@ -33,8 +33,13 @@ int main(void)
 			_putchar_cisfun();
 		if (_getline(&line, &len, stdin) == -1)
 		{
-			free(line);
-			exit(EXIT_SUCCESS);
+			if (!is_interactive)
+			{
+				perror("getline error");
+				free(line);
+				exit(EXIT_SUCCESS);
+			}
+			break;
 		}
 		if (line[0] == '\n' || spaces_tabs_check(line) == 0)
 		{
