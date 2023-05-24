@@ -11,10 +11,9 @@ void env_check(char **array)
 	if (_strlen(array[0]) == _strlen("env") && _strcmp(array[0], "env") == 0)
 		for (j = 0; environ[j] != NULL; j++)
 		{
-			printf("%s\n", environ[j]);/*
 			for (l = 0; environ[j][l] != '\0'; l++)
 				_putchar(environ[j][l]);
-			_putchar('\n');*/
+			_putchar('\n');
 		}
 }
 /**
