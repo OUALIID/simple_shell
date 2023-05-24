@@ -29,7 +29,7 @@ int spaces_tabs_check(char *line);
 /*****ALLOCATION******/
 void *_realloc(void *ptr, unsigned int size);
 /*********************/
-
+void free_2D(char **array);
 /*******STRING*******/
 int _putchar(char c);
 char *_strcpy(char *dest, char *src);

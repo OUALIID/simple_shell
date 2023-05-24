@@ -19,20 +19,6 @@ void _putchar_cisfun(void)
  * main - check the code.
  * Return: always 0.
  */
-void free_2D(char **array)
-{
-	int i;
-	i = 0;
-	if (array == NULL)
-		return;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		array[i] = NULL;
-		i++;
-	}
-	free(array);
-}
 int main(void)
 {
 	int exit_stat = -1;

@@ -46,16 +46,18 @@ void exit_check(char **array, char *line, int exit_stat)
 		if (array[1] != NULL)
 		{
 			tmp = atoi(array[1]);
-			free(array);
+			free_2D(array);
 			free(line);
 			exit(tmp);
 		}
 		else if (exit_stat == -1)
 		{
-			free(array);
+			free_2D(array);
 			free(line);
 			exit(0);
 		}
+		free_2D(array);
+		free(line);
 		exit(exit_stat);
 	}
 }
