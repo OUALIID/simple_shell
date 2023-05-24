@@ -51,7 +51,7 @@ int main(void)
 			{
 				perror("getline error");
 				free(line);
-				exit(EXIT_SUCCESS);
+				exit(EXIT_FAILURE);
 			}
 			free(line);
 			break;
