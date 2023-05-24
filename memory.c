@@ -6,7 +6,6 @@
  * @size : variable.
  * Return: pointer.
  */
-#include <stdlib.h>
 void *_realloc(void *ptr, unsigned int size)
 {
 	char *new_ptr;
@@ -34,4 +33,24 @@ void *_realloc(void *ptr, unsigned int size)
 		new_ptr[i] = ((char *)ptr)[i];
 	free(ptr);
 	return (new_ptr);
+}
+/**
+ * free_2D - check the code.
+ * @array: a double pointer
+ * Return: void.
+ */
+void free_2D(char **array)
+{
+	int i;
+
+	i = 0;
+	if (array == NULL)
+		return;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		array[i] = NULL;
+		i++;
+	}
+	free(array);
 }
