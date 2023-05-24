@@ -34,6 +34,7 @@ int clear_check(char **array)
  * exit_check - check the code.
  * @array: a double pointer
  * @line: a pointer
+ * @exit_stat: a variable
  * Return: void.
  */
 void exit_check(char **array, char *line, int exit_stat)
