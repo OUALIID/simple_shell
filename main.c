@@ -51,7 +51,6 @@ int main(void)
 		{
 			if (is_interactive)
 			{
-				perror("getline error");
 				free(line);
 				exit(EXIT_SUCCESS);
 			}
