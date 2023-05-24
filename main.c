@@ -21,42 +21,37 @@ void _putchar_cisfun(void)
  */
 int main(void)
 {
-	char *line, **array;
+	char *line = NULL;
 	size_t len = 0;
+	int is_interactive = isatty(STDIN_FILENO);
+	char **array;
 
-	line = NULL;
 	while (1)
 	{
-		_putchar_cisfun();
-		fflush(stdout);
+		if (is_interactive)
+			_putchar_cisfun();
 		if (getline(&line, &len, stdin) == -1)
 		{
-			perror("getline error");
-			exit(1);
+			if (is_interactive)
+				perror("getline error");
+			break;
 		}
-		if (line[0] == '\n' || spaces_tabs_check(line) == 0)
+		if (line[0] != '\n' && spaces_tabs_check(line))
 		{
-			free(line);
-			line = NULL;
-			continue;
-		}
-		array = string_storage(line);
-		if (clear_check(array) == 0)
-		{
-			free(line);
-			line = NULL;
+			array = string_storage(line);
+			if (clear_check(array))
+			{
+				exit_check(array, line);
+				env_check(array);
+				if (access(array[0], X_OK) == 0)
+					execute_line(array[0], array);
+				else
+					path_finder(array);
+			}
 			free(array);
-			continue;
 		}
-		exit_check(array, line);
-		env_check(array);
-		if (access(array[0], X_OK) == 0)
-			execute_line(array[0], array);
-		else
-			path_finder(array);
 		free(line);
 		line = NULL;
-		free(array);
 	}
 	return (0);
 }
