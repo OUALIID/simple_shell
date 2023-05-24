@@ -19,7 +19,7 @@ void execute_line(char *con, char **array)
 	{
 		execve(con, array, NULL);
 		perror(array[0]);
-		exit(1);
+		exit(errno);
 	}
 	else
 	{
