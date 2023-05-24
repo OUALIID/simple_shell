@@ -33,7 +33,10 @@ int main(void)
 		if (getline(&line, &len, stdin) == -1)
 		{
 			if (is_interactive)
+			{
 				perror("getline error");
+				exit(EXIT_SUCCESS);
+			}
 			break;
 		}
 		if (line[0] != '\n' && spaces_tabs_check(line))
