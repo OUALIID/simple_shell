@@ -38,7 +38,6 @@ void calls(char **array, char *line, int exit_stat)
 int main(void)
 {
 	int exit_stat = -1, is_interactive = isatty(STDIN_FILENO);
-	ssize_t read;
 	char *line = NULL, **array;
 	size_t len = 0;
 
@@ -46,11 +45,11 @@ int main(void)
 	{
 		if (is_interactive)
 			_putchar_cisfun();
-		read = getline(&line, &len, stdin);
-		if (read == -1)
+		if (getline(&line, &len, stdin) == -1)
 		{
 			if (is_interactive)
 			{
+				perror("getline error");
 				free(line);
 				exit(EXIT_SUCCESS);
 			}
