@@ -29,6 +29,7 @@ void free_2D(char **array)
 	{
 		free(array[i]);
 		array[i] = NULL;
+		i++;
 	}
 	free(array);
 }
