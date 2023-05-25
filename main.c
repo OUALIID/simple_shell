@@ -22,7 +22,7 @@ void _putchar_cisfun(void)
  * @exit_stat:a variable.
  * Return: void.
  */
-void calls(char **array, char *line, int exit_stat)
+int calls(char **array, char *line, int exit_stat)
 {
 	exit_check(array, line, exit_stat);
 	env_check(array);
@@ -30,6 +30,7 @@ void calls(char **array, char *line, int exit_stat)
 		exit_stat = execute_line(array[0], array);
 	else
 		path_finder(array);
+	return (exit_stat);
 }
 /**
  * main - check the code.
@@ -70,7 +71,7 @@ int main(void)
 			free_2D(array);
 			continue;
 		}
-		calls(array, line, exit_stat);
+		exit_stat = calls(array, line, exit_stat);
 		free(line);
 		line = NULL;
 		free_2D(array);
